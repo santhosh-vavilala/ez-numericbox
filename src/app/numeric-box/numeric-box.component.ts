@@ -1,5 +1,6 @@
-import { Component, OnInit, forwardRef } from '@angular/core';
+import { Component, OnInit, forwardRef, Output, EventEmitter, Input } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+
 
 const noop = () => {
 };
@@ -17,9 +18,10 @@ export const CUSTOM_VALUE_ACCESSOR: any = {
   providers: [CUSTOM_VALUE_ACCESSOR]
 })
 export class NumericBoxComponent implements OnInit, ControlValueAccessor {
-  min = 10;
-  max = 20;
+  @Input() min;
+  @Input() max;
   isErrored;
+  @Output() blur = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
@@ -69,9 +71,12 @@ export class NumericBoxComponent implements OnInit, ControlValueAccessor {
         else if (this.value < this.min) {
           this.value = this.min;
         }
-        this.writeValue(this.value);
-        this.onChangeCallback(this.value)
+        // this.writeValue(this.value);
+        // this.onChangeCallback(this.value)
+        this.blur.emit(this.value);
       }, 500);
+    } else{
+      this.blur.emit(this.value);      
     }
 
   }

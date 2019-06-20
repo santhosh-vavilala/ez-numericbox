@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'numeric-box';
+  onBlur(e){
+    console.log('test', e);
+  }
 }
