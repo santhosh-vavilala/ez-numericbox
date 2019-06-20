@@ -43,15 +43,15 @@ export class AppModule { }<br />
 ### Maximum Value : 
 ```
 <ez-numericbox [max]="35" [reset]="true" [(ngModel)]="myNumValue" (blur)="onBlur($event)">
-</ez-numericbox><br />
+</ez-numericbox>
 ```
 ### Rest Min and Max values: 
 ```
 <ez-numericbox [min]="25" [max]="35" [reset]="true" [(ngModel)]="myNumValue" >
-</ez-numericbox><br />
+</ez-numericbox>
 ```
 ### Blur: 
 ```
 <ez-numericbox (blur)="onBlur($event)">
-</ez-numericbox><br />
+</ez-numericbox>
 ```
