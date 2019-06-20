@@ -4,5 +4,21 @@
   "peerDependencies": {
     "@angular/common": "^7.2.0",
     "@angular/core": "^7.2.0"
-  }
+  },
+  "license": "MIT",
+  "description": "Numeric box for Angular",
+  "keywords": [
+    "numeric input",
+    "ez-numericbox",
+    "input",
+    "min and max",
+    "angular",
+    "angular2",
+    "typescript",
+    "input type number",
+    "number input",
+    "restrict number",
+    "angular input",
+    "limit number"
+  ]
 }
