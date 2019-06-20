@@ -1,35 +1,81 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, forwardRef } from '@angular/core';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
+const noop = () => {
+};
+
+export const CUSTOM_VALUE_ACCESSOR: any = {
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => NumericBoxComponent),
+  multi: true
+};
 
 @Component({
   selector: 'app-numeric-box',
   templateUrl: './numeric-box.component.html',
-  styleUrls: ['./numeric-box.component.scss']
+  styleUrls: ['./numeric-box.component.scss'],
+  providers: [CUSTOM_VALUE_ACCESSOR]
 })
-export class NumericBoxComponent implements OnInit {
- min = 10;
- max = 20;
- inputValue;
- isErrored;
+export class NumericBoxComponent implements OnInit, ControlValueAccessor {
+  min = 10;
+  max = 20;
+  isErrored;
   constructor() { }
 
   ngOnInit() {
   }
+  private innerValue: any = '';
 
-  checkRange(evt){
-    if(this.inputValue > this.max || this.inputValue < this.min){
+  private onTouchedCallback: () => void = noop;
+  private onChangeCallback: (_: any) => void = noop;
+
+  get value(): any {
+    return this.innerValue;
+  };
+
+  set value(v: any) {
+    if (v !== this.innerValue) {
+      this.innerValue = v;
+      this.onChangeCallback(v);
+    }
+  }
+
+  onBlur() {
+    this.onTouchedCallback();
+  }
+
+  writeValue(value: any) {
+    if (value !== this.innerValue) {
+      this.innerValue = value;
+    }
+  }
+
+  registerOnChange(fn: any) {
+    this.onChangeCallback = fn;
+  }
+
+  registerOnTouched(fn: any) {
+    this.onTouchedCallback = fn;
+  }
+
+  checkRange(evt) {
+    if (this.value > this.max || this.value < this.min) {
       this.isErrored = true;
       setTimeout(() => {
         this.isErrored = false;
-        if(this.inputValue > this.max){
-          this.inputValue = this.max;
+        if (this.value > this.max) {
+          this.value = this.max;
         }
-        else if(this.inputValue < this.min){
-         this.inputValue = this.min;
-       }
+        else if (this.value < this.min) {
+          this.value = this.min;
+        }
+        this.writeValue(this.value);
+        this.onChangeCallback(this.value)
       }, 500);
     }
-   
+
   }
+
+
 
 }
