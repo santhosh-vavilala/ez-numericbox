@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ez-numericbox": [
+        "dist/ez-numericbox"
+      ],
+      "ez-numericbox/*": [
+        "dist/ez-numericbox/*"
+      ]
+    }
   }
 }
