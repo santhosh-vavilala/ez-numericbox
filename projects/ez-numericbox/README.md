@@ -1,24 +1,40 @@
 # EzNumericbox
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.0.
+Minimalistic design, simple, customizable, and easy-to-use numeric input box component for your Angular 2+ application.
 
-## Code scaffolding
+## Insatallation
 
-Run `ng generate component component-name --project ez-numericbox` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ez-numericbox`.
-> Note: Don't forget to add `--project ez-numericbox` or else it will be added to the default project in your `angular.json` file. 
+npm install ez-numericbox 
 
-## Build
+# Code - app.moduele.ts
 
-Run `ng build ez-numericbox` to build the project. The build artifacts will be stored in the `dist/` directory.
+import { BrowserModule } from '@angular/platform-browser';<br />
+import { NgModule } from '@angular/core';<br />
+import { EzNumericboxModule,  EzNumericboxService } from 'ez-numericbox'<br />
+import { AppComponent } from './app.component';<br />
+import { FormsModule } from '@angular/forms';<br />
 
-## Publishing
+@NgModule({<br />
+  declarations: [<br />
+    AppComponent,<br />
+  ],<br />
+  imports: [<br />
+    BrowserModule,<br />
+    EzNumericboxModule,<br />
+    FormsModule<br />
+  ],<br />
+  providers: [EzNumericboxService],<br />
+  bootstrap: [AppComponent]<br />
+})<br />
+export class AppModule { }<br />
 
-After building your library with `ng build ez-numericbox`, go to the dist folder `cd dist/ez-numericbox` and run `npm publish`.
+# code - Markup
 
-## Running unit tests
+<ez-numericbox [min]="25" [max]="35" [reset]="true" [(ngModel)]="myNumValue" (blur)="onBlur($event)"></ez-numericbox><br />
 
-Run `ng test ez-numericbox` to execute the unit tests via [Karma](https://karma-runner.github.io).
+# Configuration
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Minimum Value : <ez-numericbox [min]="25" [reset]="true" [(ngModel)]="myNumValue" (blur)="onBlur($event)"></ez-numericbox><br />
+Maximum Value : <ez-numericbox [max]="35" [reset]="true" [(ngModel)]="myNumValue" (blur)="onBlur($event)"></ez-numericbox><br />
+Rest Min and Max values: <ez-numericbox [min]="25" [max]="35" [reset]="true" [(ngModel)]="myNumValue" ></ez-numericbox><br />
+Blur: <ez-numericbox (blur)="onBlur($event)"></ez-numericbox><br />
