@@ -1,4 +1,4 @@
-# EzNumericbox
+# ez-numericbox
 
 Minimalistic design, simple, customizable, and easy-to-use numeric input box component for your Angular 2+ application.
 
@@ -28,7 +28,7 @@ import { FormsModule } from '@angular/forms';<br />
 })<br />
 export class AppModule { }<br />
 
-# code - Markup
+# Code - Markup
 
 <ez-numericbox [min]="25" [max]="35" [reset]="true" [(ngModel)]="myNumValue" (blur)="onBlur($event)"></ez-numericbox><br />
 
