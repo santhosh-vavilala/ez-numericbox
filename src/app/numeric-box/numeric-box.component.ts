@@ -20,6 +20,7 @@ export const CUSTOM_VALUE_ACCESSOR: any = {
 export class NumericBoxComponent implements OnInit, ControlValueAccessor {
   @Input() min;
   @Input() max;
+  @Input() reset: boolean;
   isErrored;
   @Output() blur = new EventEmitter();
   constructor() { }
@@ -61,7 +62,7 @@ export class NumericBoxComponent implements OnInit, ControlValueAccessor {
   }
 
   checkRange(evt) {
-    if (this.value > this.max || this.value < this.min) {
+    if (this.reset && this.value > this.max || this.value < this.min) {
       this.isErrored = true;
       setTimeout(() => {
         this.isErrored = false;

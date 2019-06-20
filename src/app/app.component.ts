@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  myNumValue = 100;
   title = 'numeric-box';
   onBlur(e){
     console.log('test', e);
