@@ -29,10 +29,10 @@ import { FormsModule } from '@angular/forms';<br />
 export class AppModule { }<br />
 
 # Code - Markup
-
+```
 <ez-numericbox [min]="25" [max]="35" [reset]="true" [(ngModel)]="myNumValue" (blur)="onBlur($event)"><br />
 </ez-numericbox><br />
-
+```
 # Configuration
 
 ### Minimum Value : 
