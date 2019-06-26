@@ -13,7 +13,7 @@ export const CUSTOM_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'ez-numericbox',
   template: `
-  <input type="number" [ngClass]="{'alert':isErrored}" #inp [(ngModel)]="value"  [min]="min" [max]="max" (blur)="checkRange($event)">
+  <input type="number" [ngClass]="{'ez-alert':isErrored}" #inp [(ngModel)]="value"  [min]="min" [max]="max" (blur)="checkRange($event)">
   `,
   styleUrls: ['./ez-numericbox.component.scss'],
   providers: [CUSTOM_VALUE_ACCESSOR]

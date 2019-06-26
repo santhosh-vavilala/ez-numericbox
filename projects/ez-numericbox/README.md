@@ -45,7 +45,8 @@ export class AppModule { }<br />
 <ez-numericbox [max]="35" [reset]="true" [(ngModel)]="myNumValue" (blur)="onBlur($event)">
 </ez-numericbox>
 ```
-### Rest Min and Max values: 
+### Reset Min and Max values: 
+Resets value to min or max value, when a value is outside the boundary of min and max values respectively.
 ```
 <ez-numericbox [min]="25" [max]="35" [reset]="true" [(ngModel)]="myNumValue" >
 </ez-numericbox>
